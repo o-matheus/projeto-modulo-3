@@ -1,0 +1,15 @@
+/cliente-api
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*_test.go
+*_test.js
+*.out
+coverage.out
+.bin/
+go.work
+go.work.sum
+.env
