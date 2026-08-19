@@ -18,7 +18,7 @@ type Cliente struct {
 
 func NewCliente(name, email, passwordHash string) (Cliente, error) {
 	name = strings.TrimSpace(name)
-	email = strings.TrimSpace(email)
+	email = strings.ToLower(strings.TrimSpace(email))
 
 	if name == "" {
 		return Cliente{}, ErrNomeClienteRequired
@@ -47,4 +47,22 @@ func NewCliente(name, email, passwordHash string) (Cliente, error) {
 		CreatedAt:    now,
 		UpdatedAt:    now,
 	}, nil
+}
+
+func (c *Cliente) Update(name, email string) error {
+	name = strings.TrimSpace(name)
+	if name == "" {
+		return ErrNomeClienteRequired
+	}
+
+	email = strings.ToLower(strings.TrimSpace(email))
+	if email == "" {
+		return ErrEmailClienteRequired
+	}
+
+	c.Name = name
+	c.Email = email
+	c.UpdatedAt = time.Now()
+	return nil
+
 }

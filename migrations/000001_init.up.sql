@@ -14,8 +14,8 @@ CREATE TABLE produtos
     name       VARCHAR(255)   NOT NULL,
     price      DECIMAL(10, 2) NOT NULL,
     stock      INT            NOT NULL CHECK (stock >= 0),
-    created_at TIMESTAMPZ     NOT NULL DEFAULT now(),
-    updated_at TIMESTAMPZ     NOT NULL DEFAULT now()
+    created_at TIMESTAMPTZ     NOT NULL DEFAULT now(),
+    updated_at TIMESTAMPTZ     NOT NULL DEFAULT now()
 )
 
 CREATE TABLE pedidos
@@ -34,5 +34,5 @@ CREATE TABLE itens_pedido
     produto_id    UUID           NOT NULL REFERENCES produtos (id),
     quantity      INT            NOT NULL CHECK (quantity > 0),
     price_at_time DECIMAL(10, 2) NOT NULL,
-    created_at    TIMESTAMPZ     NOT NULL DEFAULT now()
+    created_at    TIMESTAMPTZ     NOT NULL DEFAULT now()
 )
